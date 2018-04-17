@@ -8,13 +8,15 @@ class YouTube_API():
 
     def parse(self, channel_id):
         try:
-            self.data = requests.get("https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id={}".format(channel_id),
+            r = requests.get("https://www.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id={}".format(channel_id),
                            headers={
                                "Authorization": "Bearer {}".format(self.token)
-                           }).json()['items'][0]
-            print(self.data)
+                           }).json()
+           self.data = r['items'][0]
         except Exception as e:
             print(e)
+            if 'error' in r:
+                print("ERROR: ", r['error']['code'], r['error']['message'])
             pass
 
     def getID(self):
