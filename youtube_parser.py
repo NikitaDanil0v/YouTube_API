@@ -1,6 +1,6 @@
 import requests
 
-class YouTube_API():
+class YouTube_Parser():
 
     def __init__(self):
         self.token = "" #provide your token
@@ -79,7 +79,7 @@ class YouTube_API():
 
         return None
 
-YouTube = YouTube_API()
+YouTube = YouTube_Parser()
 
 YouTube.parse("UC_x5XG1OV2P6uZZ5FSM9Ttw")
 print(YouTube.getCustomUrl(), YouTube.getCreationDate(), YouTube.getDescription(), YouTube.getTitle())
